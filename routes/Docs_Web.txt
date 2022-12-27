@@ -1,0 +1,111 @@
+// Video 3 WPU
+Route::get('/', function () {
+    // return ('Halaman Home');
+    return view('home');
+});
+Route::get('/about', function () {
+    // return ('Halaman About');
+    return view('About', [
+        "name" => "Samsudin",
+        "email" => "secsec992@gmail.com",
+        "image" => "Gyomei_Himejima.jpg"
+    ]);
+});
+Route::get('/blog', function () {
+    // return ('Halaman Blog');
+    return view('posts');
+});
+// Video 3 WPU
+
+// Video 4 WPU
+Route::get('/', function () {
+    // return ('Halaman Home');
+    return view('home', [
+        'title' => 'Home'
+    ]);
+});
+Route::get('/about', function () {
+    // return ('Halaman About');
+    return view('About', [
+        "name" => "Samsudin",
+        "email" => "secsec992@gmail.com",
+        "image" => "Gyomei_Himejima.jpg",
+        "title" => "About"
+    ]);
+});
+Route::get('/blog', function () {
+    // return ('Halaman Blog');
+    return view('posts', [
+        "title" => "Posts",
+        "posts" =>  [
+        [
+            "title" => "Judul Post Pertama",
+            "slug" => "judul-post-pertama",
+            "author" => "Sulaiman",
+            "body" => "
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim officia ipsa repellat nemo aspernatur omnis sint deserunt explicabo ipsum, temporibus quisquam totam. Ullam non, deserunt iste porro quam quod impedit cum neque perspiciatis hic consectetur. Odio molestias reprehenderit cum vero ut perferendis, recusandae soluta! Cum ratione dolorum voluptatem dignissimos eum ipsum debitis itaque praesentium, similique iure doloribus saepe veritatis vero perspiciatis. Eaque exercitationem illum, autem esse temporibus veniam adipisci alias quae tempora officia neque vel, placeat praesentium quam ratione quo."
+        ],
+        [
+            "title" => "Judul Post Kedua",
+            "slug" => "judul-post-kedua",
+            "author" => "Samsudin",
+            "body" => "
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, sequi. Fuga voluptas officiis atque eaque assumenda ipsam velit, sequi facere aut quaerat repellendus quia cumque mollitia harum necessitatibus corporis pariatur? Excepturi hic amet quidem animi provident odit, reprehenderit vel non voluptate assumenda ducimus explicabo saepe reiciendis harum corrupti ullam mollitia qui deserunt dignissimos commodi distinctio, repellendus aut quia voluptates? Impedit, minus iste at quas debitis eos labore ipsum aliquam quam voluptatem id laboriosam, amet similique ducimus soluta facere et perferendis velit porro. Omnis quod quae nostrum ea, facilis porro et saepe! Perspiciatis ipsam nemo nihil incidunt facere. Exercitationem, distinctio soluta."
+        ]
+    ]
+    ]);
+});
+//halaman single post
+Route::get('posts/{slug}', function ($slug) {
+    // pada route di atas {slug} merupakan sebuah wildcard yang akan mengambil apapun isi dari / nya
+    $blog_posts = [
+        [
+            "title" => "Judul Post Pertama",
+            "slug" => "judul-post-pertama",
+            "author" => "Sulaiman",
+            "body" => "
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim officia ipsa repellat nemo aspernatur omnis sint deserunt explicabo ipsum, temporibus quisquam totam. Ullam non, deserunt iste porro quam quod impedit cum neque perspiciatis hic consectetur. Odio molestias reprehenderit cum vero ut perferendis, recusandae soluta! Cum ratione dolorum voluptatem dignissimos eum ipsum debitis itaque praesentium, similique iure doloribus saepe veritatis vero perspiciatis. Eaque exercitationem illum, autem esse temporibus veniam adipisci alias quae tempora officia neque vel, placeat praesentium quam ratione quo."
+        ],
+        [
+            "title" => "Judul Post Kedua",
+            "slug" => "judul-post-kedua",
+            "author" => "Samsudin",
+            "body" => "
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, sequi. Fuga voluptas officiis atque eaque assumenda ipsam velit, sequi facere aut quaerat repellendus quia cumque mollitia harum necessitatibus corporis pariatur? Excepturi hic amet quidem animi provident odit, reprehenderit vel non voluptate assumenda ducimus explicabo saepe reiciendis harum corrupti ullam mollitia qui deserunt dignissimos commodi distinctio, repellendus aut quia voluptates? Impedit, minus iste at quas debitis eos labore ipsum aliquam quam voluptatem id laboriosam, amet similique ducimus soluta facere et perferendis velit porro. Omnis quod quae nostrum ea, facilis porro et saepe! Perspiciatis ipsam nemo nihil incidunt facere. Exercitationem, distinctio soluta."
+        ]
+    ];
+    $new_post = [];
+    foreach ($blog_posts as $post) {
+        if ($post["slug"] === $slug) {
+            $new_post = $post;
+        }
+    }
+    return view('post', [
+        'title' => 'Single Post',
+        'post' => $new_post
+    ]);
+});
+// Video 4 WPU
+
+// Video 5 WPU
+Route::get('/', function () {
+    // return ('Halaman Home');
+    return view('home', [
+        'title' => 'Home'
+    ]);
+});
+Route::get('/about', function () {
+    // return ('Halaman About');
+    return view('About', [
+        "name" => "Samsudin",
+        "email" => "secsec992@gmail.com",
+        "image" => "Gyomei_Himejima.jpg",
+        "title" => "About"
+    ]);
+});
+
+Route::get('/posts', [PostController::class, 'index']);
+
+//halaman single post
+Route::get('posts/{slug}', [PostController::class, 'show']);
+// Video 5 WPU

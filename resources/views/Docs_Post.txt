@@ -1,0 +1,41 @@
+{{-- video 4 --}}
+@extends('layouts.main')
+@section('container')
+{{-- penamaan section yaitu container, harus sama dengan dilayout --}}
+<article>
+    <h2>{{ $post['title'] }}</h2>
+    <h5>{{ $post['author'] }}</h5>
+    <p>{{ $post['body'] }}</p>
+</article>
+<a href="/posts">Back to Posts</a>
+@endsection
+{{-- video 4 --}}
+
+
+{{-- video 7 --}}
+Dari pengisian table melalui php artisan tinker
+untuk mengetahui datanya sudah masuk atau belom atau juga mau menggunakan 
+fungsi-fungsi pada laravel bisa menggunakan fungsi ini di php artisan tinker
+
+1. Untuk mencari data yang pertama kali keluar dapat menggunakan command 
+    Nama Model::first()  
+    contohnya Post::first()
+2. Untuk mencari data berdasarkan kolom table dapat menggunakan command 
+    Nama Model::pluck('nama kolom')  
+    contohnya Post::pluck('title')
+
+@extends('layouts.main')
+
+@section('container')
+    <h1 class="mb-5">{{ $post->title }}</h1>
+    {!! $post->body !!}
+{{-- hasil print body di atas adalah
+    fitur dari laravel yang memungkinan
+    untuk melakukan print out sesuatu dari database apabila isi dari 
+    kolom tersebut terdapat script html yang perlu dibaca, selain itu juga untuk
+    menghindari script html yang aneh2 --}}
+<a href="/posts">Back to Posts</a>
+
+@endsection
+{{-- video 7 --}}
+

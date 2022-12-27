@@ -1,0 +1,56 @@
+<?php
+
+namespace App\Models;
+// video 5
+class Post
+{
+    private static $blog_posts = [
+        [
+            "title" => "Judul Post Pertama",
+            "slug" => "judul-post-pertama",
+            "author" => "Sulaiman",
+            "body" => "
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim officia ipsa repellat nemo aspernatur omnis sint deserunt explicabo ipsum, temporibus quisquam totam. Ullam non, deserunt iste porro quam quod impedit cum neque perspiciatis hic consectetur. Odio molestias reprehenderit cum vero ut perferendis, recusandae soluta! Cum ratione dolorum voluptatem dignissimos eum ipsum debitis itaque praesentium, similique iure doloribus saepe veritatis vero perspiciatis. Eaque exercitationem illum, autem esse temporibus veniam adipisci alias quae tempora officia neque vel, placeat praesentium quam ratione quo."
+        ],
+        [
+            "title" => "Judul Post Kedua",
+            "slug" => "judul-post-kedua",
+            "author" => "Samsudin",
+            "body" => "
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum, sequi. Fuga voluptas officiis atque eaque assumenda ipsam velit, sequi facere aut quaerat repellendus quia cumque mollitia harum necessitatibus corporis pariatur? Excepturi hic amet quidem animi provident odit, reprehenderit vel non voluptate assumenda ducimus explicabo saepe reiciendis harum corrupti ullam mollitia qui deserunt dignissimos commodi distinctio, repellendus aut quia voluptates? Impedit, minus iste at quas debitis eos labore ipsum aliquam quam voluptatem id laboriosam, amet similique ducimus soluta facere et perferendis velit porro. Omnis quod quae nostrum ea, facilis porro et saepe! Perspiciatis ipsam nemo nihil incidunt facere. Exercitationem, distinctio soluta."
+        ]
+    ];
+
+    public static function all()
+    {
+        //Kalau properti biasa
+        // return  $this->$blog_posts;
+
+        //Kalau properti static
+        // return  self::$blog_posts;
+
+        // Menggunakan collection punya laravel
+        return  collect(self::$blog_posts);
+    }
+
+    public static function find($slug)
+    {
+        //self itu untuk properti static
+        // $posts = self::$blog_posts;
+
+        // $post = [];
+        // foreach ($posts as $p) {
+        //     if ($p["slug"] === $slug) {
+        //         $post = $p;
+        //     }
+        // };
+
+        // return $post;
+
+        //static itu untuk method static
+        $posts = static::all();
+
+        return $posts->firstWhere('slug', $slug);
+    }
+};
+// video 5

@@ -1,0 +1,32 @@
+// video 7
+
+Mass Asignment:
+1. Post::create([
+    'title' => 'Judul Ketiga',
+    'slug' => 'judul-ke-tiga',
+    'excerpt' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe atque culpa nesciunt ullam molestias at iusto quidem harum quam qui voluptatem sapiente sunt cupiditate, natus sit iure, numquam distinctio ipsa quas obcaecati excepturi sint maiores ut nihil.',
+    'body' => '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe atque culpa nesciunt ullam molestias at iusto quidem harum quam qui voluptatem sapiente sunt cupiditate, natus sit iure, numquam distinctio ipsa quas obcaecati excepturi sint maiores ut nihil. Autem, nam? Reprehenderit, nihil quasi, unde dicta saepe deserunt commodi animi optio, consequuntur velit corrupti perspiciatis earum aliquam odio mollitia dolorum! Veniam, itaque quisquam.</p><p>Id culpa iste vel saepe? Beatae sit minus praesentium magnam omnis asperiores obcaecati quia magni placeat, mollitia sunt numquam, rerum nisi tenetur natus aliquam aut iusto iste tempora delectus doloremque earum. Voluptate maiores perspiciatis, sequi incidunt dignissimos eum nulla!</p>'
+    ]);
+
+2. Post::where('title','Judul Ke Tiga Berubah')->update(['excerpt'=>'excerpt post 3 berubah'])
+
+->pengisian database tinker menggunakan cara pengisian diatas, tidak akan bisa dilakukan, perlu 
+di inisialisasi modelnya dulu dengan fillable
+// video 7
+
+//video 8
+Post::create([
+    'title' => 'Judul Keempat',
+    'category_id'=> 3,
+    'slug' => 'judul-ke-empat',
+    'excerpt' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe atque culpa nesciunt ullam molestias at iusto quidem harum quam qui voluptatem sapiente sunt cupiditate, natus sit iure, numquam distinctio ipsa quas obcaecati excepturi sint maiores ut nihil.',
+    'body' => '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe atque culpa nesciunt ullam molestias at iusto quidem harum quam qui voluptatem sapiente sunt cupiditate, natus sit iure, numquam distinctio ipsa quas obcaecati excepturi sint maiores ut nihil. Autem, nam? Reprehenderit, nihil quasi, unde dicta saepe deserunt commodi animi optio, consequuntur velit corrupti perspiciatis earum aliquam odio mollitia dolorum! Veniam, itaque quisquam.</p><p>Id culpa iste vel saepe? Beatae sit minus praesentium magnam omnis asperiores obcaecati quia magni placeat, mollitia sunt numquam, rerum nisi tenetur natus aliquam aut iusto iste tempora delectus doloremque earum. Voluptate maiores perspiciatis, sequi incidunt dignissimos eum nulla!</p>'
+    ]);
+
+untuk mengambil semua postingan dengan category 1 di tinker:
+Post:where('category_id',1)->get()
+
+
+cara ngecek bahwa si model post sudah connect dengan model category bisa dengan cara dibawah di tinker
+"$post->category" ->nanti akan dicarikan category yang cocok dengan data pada $post dan "category" di atas adalah fungsi  pada model post
+//video 8

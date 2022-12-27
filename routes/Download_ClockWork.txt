@@ -1,0 +1,2 @@
+install clockwork library via composer
+"composer require itsgoingd/clockwork"

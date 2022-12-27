@@ -1,0 +1,21 @@
+factory  adalah pabrik pembuat data namun datanya hanya dummy, laravel secara default punya factory
+
+
+faker adalah library yang akan mengenerate fake data, faker dapat mengenerate data berdasarkan data masing-masing negara. Stepnya adalah dengan 
+
+1. masuk ke folder app/config/app.php 
+2. cari 'faker_locale' => 'en_US' lalu ganti     'faker_locale' => env('FAKER_LOCALE','en_US')
+
+(faker_locale di arahkan ke env untuk membaca FAKER_LOCALE namun jika tidak ditemukan akan kembali ke default 'en_US')
+
+
+Untuk mencoba factory dapat dilakukan di seeders/DatabaseSeeder
+User::factory(5)->create(); lalu php artisan seed atau 
+
+Untuk membuat factory sendiri bisa dengan mengetikan command
+contoh:
+"php artisan make:factory PostFactory"
+
+Ketika ingin membuat sebuah model sekaligus dengan migration factory dan seeder dapat di buat dengan command 
+contoh:
+"php artisan make:model Student -mfs"

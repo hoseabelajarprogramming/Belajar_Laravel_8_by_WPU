@@ -1,0 +1,27 @@
+Cara Pengisian Database dengan menggunakan "php artisan tinker"
+
+Kalo mau isi tabel user dengan model 
+
+$user = new User()
+
+$user->name = "Hosea"
+
+$user->email = "hosea@gmail.com"
+
+$user->password = bcrypt('12345') //untuk enkripsi password
+
+$user->save()
+
+$user->all() //all() merupakan fungsi yang sudah di sediakan laravel melalui eloquent ORM untuk 
+                melihat semua data 
+$user->first() //first() merupakan fungsi yang sudah di sediakan laravel melalui eloquent ORM untuk 
+                melihat data paling pertama
+$user->find(id) //find(id) merupakan fungsi yang sudah di sediakan laravel melalui eloquent ORM untuk 
+                melihat data dengan id tertentu
+
+
+
+
+
+
+

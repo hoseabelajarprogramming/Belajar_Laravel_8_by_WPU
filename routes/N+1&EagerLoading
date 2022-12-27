@@ -1,0 +1,5 @@
+N+1 Problem-> terjadi ketika aplikasi mengambil data terhadap database dimana pemanggilan query atau ke database berulang-ulang, yang seharusnya melakukan 1 kali pemanggilan, kenyataannya dilakukan sebanyak N kali 
+
+
+Eager Loading -> pada saat melakukan akses pada
+eloquent relationship (belongs to, has many, dll),maka akan dilakukan pemanggilan lazy load(data tidak akan di load sampai pertama kali di akses) tapi eloquent bisa melakukan eager load ketika melakukan query pada parentnya. Eager loading ini dilakukan untuk menghindari N+1 problem, konsepnya adalah ketika pada mengakses page pada dasarnya butuh 26 query untuk di loop dengan eager loading hanya perlu 2 query 

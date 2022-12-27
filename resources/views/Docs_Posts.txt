@@ -1,0 +1,91 @@
+{{-- Video 3 --}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Belajar Laravel Blog | Posts</title>
+</head>
+<body>
+    <h1>Halaman Posts</h1>
+</body>
+</html>
+{{-- Video 3 --}}
+
+{{-- video 4 --}}
+{{-- dumb and dienya milik laravel --}}
+{{-- @dd($posts);  --}}
+@extends('layouts.main')
+@section('container') 
+{{-- penamaan section yaitu container, harus sama dengan dilayout --}}
+@foreach ($posts as $post)
+<article class="mb-5">
+    <h2><a href="/posts/{{ $post['slug'] }}">{{ $post['title'] }}</a></h2>
+    <h5>By: {{ $post['author'] }}</h5>
+    <p>{{ $post['body'] }}</p>
+</article>
+@endforeach    
+@endsection 
+{{-- video 4 --}}
+
+{{-- video 7 --}}
+@extends('layouts.main')
+
+@section('container')
+@foreach ($posts as $post)
+<article class="mb-5">
+    <h2><a href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h2>
+    <p>{{ $post->excerpt }}</p>
+</article>
+    
+@endforeach    
+
+@endsection
+{{-- video 7 --}}
+
+{{-- video 9 --}}
+@extends('layouts.main')
+
+@section('container')
+@foreach ($posts as $post)
+<article class="mb-5 border-bottom pb-4">
+    <h2><a  class ="text-decoration-none" href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h2>
+    
+    <p>By <a href="#" class="text-decoration-none">{{ $post->user->name }}</a> in <a class ="text-decoration-none" href="/categories/{{ $post->category->slug }}"> {{ $post->category->name }} </a></p>
+    
+    <p>{{ $post->excerpt }}</p>
+
+    <a class ="text-decoration-none" href="/posts/{{ $post->slug }}">Read More</a>
+</article>
+    
+@endforeach    
+
+@endsection
+
+{{-- video 9 --}}
+
+{{-- video 10 --}}
+@extends('layouts.main')
+
+@section('container')
+<h1 class="mb-5">{{ $title }}</h1>
+@foreach ($posts as $post)
+<article class="mb-5 border-bottom pb-4">
+    <h2><a  class ="text-decoration-none" href="/posts/{{ $post->slug }}">{{ $post->title }}</a></h2>
+    
+    <p>By <a href="/authors/{{ $post->user->username }}" class="text-decoration-none">{{ $post->user->name }}</a> in <a class ="text-decoration-none" href="/categories/{{ $post->category->slug }}"> {{ $post->category->name }} </a></p>
+    
+    <p>{{ $post->excerpt }}</p>
+
+    <a class ="text-decoration-none" href="/posts/{{ $post->slug }}">Read More</a>
+</article>
+    
+@endforeach    
+
+@endsection
+
+{{-- video 10 --}}
+
+
+
