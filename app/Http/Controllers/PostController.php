@@ -44,22 +44,40 @@ class PostController extends Controller
     //video 10
 
     //video 11
+    // {
+    //     return view('posts', [
+    //         "title" => "All Posts",
+    //         //untuk menampilkan post berdasarkan yang terbaru di created_at bukan berdasarkan id
+    //         "posts" => Post::with(['user', 'category'])->latest()->get()
+    //     ]);
+    // }
+    //video 11
+    //video 12
     {
         return view('posts', [
             "title" => "All Posts",
+            "active" => "posts",
             //untuk menampilkan post berdasarkan yang terbaru di created_at bukan berdasarkan id
             "posts" => Post::with(['user', 'category'])->latest()->get()
         ]);
     }
-    //video 11
+    //video 12
 
     //video 7
     public function show(Post $post)
     {
+        // return view('post', [
+        // 'title' => 'Single Post',
+        // 'post' => $post
+        // ]);
+
+        //video 12 
         return view('post', [
             'title' => 'Single Post',
+            'active' => 'posts',
             'post' => $post
         ]);
+        //video12
     }
     //video 7
 }

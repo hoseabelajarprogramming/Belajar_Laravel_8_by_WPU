@@ -17,21 +17,42 @@ use App\Http\Controllers\PostController;
 |
 */
 // Video 5 WPU
+// Route::get('/', function () {
+//     // return ('Halaman Home');
+//     return view('home', [
+//         'title' => 'Home'
+//     ]);
+// });
+// Route::get('/about', function () {
+//     // return ('Halaman About');
+//     return view('About', [
+//         "name" => "Samsudin",
+//         "email" => "secsec992@gmail.com",
+//         "image" => "Gyomei_Himejima.jpg",
+//         "title" => "About"
+//     ]);
+// });
+
+//video 12
 Route::get('/', function () {
     // return ('Halaman Home');
     return view('home', [
-        'title' => 'Home'
+        'title' => 'Home',
+        'active' => 'home',
     ]);
 });
+
 Route::get('/about', function () {
     // return ('Halaman About');
     return view('About', [
         "name" => "Samsudin",
         "email" => "secsec992@gmail.com",
         "image" => "Gyomei_Himejima.jpg",
-        "title" => "About"
+        "title" => "About",
+        "active" => "about"
     ]);
 });
+//video 12
 
 Route::get('/posts', [PostController::class, 'index']);
 
@@ -52,12 +73,12 @@ Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
 
 //video 8
-Route::get('/categories', function () {
-    return view('categories', [
-        'title' => 'Post Categories',
-        'categories' => Category::all()
-    ]);
-});
+// Route::get('/categories', function () {
+//     return view('categories', [
+//         'title' => 'Post Categories',
+//         'categories' => Category::all()
+//     ]);
+// });
 
 // Route::get('/categories/{category:slug}', function (Category $category) {
 //     return view('category', [
@@ -68,15 +89,35 @@ Route::get('/categories', function () {
 // });
 //video 8
 
+// video 12
+Route::get('/categories', function () {
+    return view('categories', [
+        'title' => 'Post Categories',
+        'active' => 'categories',
+        'categories' => Category::all()
+    ]);
+});
+// video 12
+
 //video 11
 // untuk menampilkan blog berdasarkan category yang menulis blog yang di klasifikasikan dalam bentuk slug
+// Route::get('/categories/{category:slug}', function (Category $category) {
+//     return view('posts', [
+//         'title' => "Post by Category    : $category->name",
+//         'posts' => $category->posts->load('category', 'user')
+//     ]);
+// });
+//video 11
+
+//video 12
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('posts', [
         'title' => "Post by Category    : $category->name",
+        'active' => 'categories',
         'posts' => $category->posts->load('category', 'user')
     ]);
 });
-//video 11
+//video 12
 
 //video 10
 //untuk menampilkan blog berdasarkan user yang menulis blog yang di klasifikasikan dalam bentuk username
