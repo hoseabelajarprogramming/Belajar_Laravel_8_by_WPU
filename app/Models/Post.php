@@ -51,6 +51,27 @@ class Post extends Model
             return $query->where('title', 'like', '%' . $search . '%')
                 ->orWhere('body', 'like', '%' . $search . '%');
         });
+
+
+        //membuat query untuk search yang mana ketika user berada di category tertentu
+        //dan mencari blog postingan pada category tersebut
+        //whereHas ->digunakan untuk join table / mencari yang punya relationship apa
+        //whereHas Category dibawah adalah relasi join table dengan function category yang terdapat pada model ini
+        $query->when($filters['category'] ?? false, function ($query, $category) {
+            return $query->whereHas('category', function ($query) use ($category) {
+                $query->where('slug', $category);
+            });
+        });
+
+        $query->when(
+            $filters['author'] ?? false,
+            fn ($query, $author) =>
+            $query->whereHas(
+                'user',
+                fn ($query) =>
+                $query->where('username', $author)
+            )
+        );
     }
 
     //cara 4

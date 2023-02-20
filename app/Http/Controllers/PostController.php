@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -32,7 +34,7 @@ class PostController extends Controller
     //         'post' => Post::find($id)
     //     ]);
     // }
-    //video 5 
+    //video 5
     //video 10
     // {
     //     return view('posts', [
@@ -69,7 +71,7 @@ class PostController extends Controller
     {
         //SEARCH METHOD
 
-        //cara 1 
+        //cara 1
         //menggunakan method "Request"
         //method pencarian ini kurang pas karena method pencarian ini biasa dilakukan pada model bukan pada controller walaupun berjalan dengan baik
 
@@ -104,12 +106,24 @@ class PostController extends Controller
 
         //cara 3 dan 4
 
+        $title = "";
+        if (request('category')) {
+            $category = Category::firstWhere('slug', request('category'));
+            $title = ' in ' . $category->name;
+        }
+        if (request('author')) {
+            $author = User::firstWhere('username', request('author'));
+            $title = ' by ' . $author->name;
+        }
+
+
         return view('posts', [
-            "title" => "All Posts",
+            "title" => "All Posts" . $title,
             "active" => "posts",
             //untuk menampilkan post berdasarkan yang terbaru di created_at bukan berdasarkan id
             //Post with itu merupakan eager dan lazy load
-            "posts" => Post::latest()->filter(request(['search']))->get()
+            "posts" => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString()
+            //withQueryStiring() jadi apapun query yang dijalankan dipagination sebelumnya akan di jalankan juga di pagination selanjutnya
         ]);
         //cara 3
     }
@@ -124,7 +138,7 @@ class PostController extends Controller
         // 'post' => $post
         // ]);
 
-        //video 12 
+        //video 12
         return view('post', [
             'title' => 'Single Post',
             'active' => 'posts',

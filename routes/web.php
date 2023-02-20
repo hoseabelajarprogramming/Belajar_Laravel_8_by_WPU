@@ -109,25 +109,31 @@ Route::get('/categories', function () {
 // });
 //video 11
 
+// video 13
+// di video 13 halaman categories dan authors gak kepake
+
 //video 12
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('posts', [
-        'title' => "Post by Category    : $category->name",
-        'active' => 'categories',
-        'posts' => $category->posts->load('category', 'user')
-    ]);
-});
+// Route::get('/categories/{category:slug}', function (Category $category) {
+//     return view('posts', [
+//         'title' => "Post by Category    : $category->name",
+//         'active' => 'categories',
+//         'posts' => $category->posts->load('category', 'user')
+//     ]);
+// });
 //video 12
 
 //video 10
 //untuk menampilkan blog berdasarkan user yang menulis blog yang di klasifikasikan dalam bentuk username
-Route::get('/authors/{author:username}', function (User $author) {
-    return view('posts', [
-        'title' => "Post by Author    : $author->name",
-        //penggunaan load itu digunakan untuk melakukan lazy load 
-        //view Posts digunakan berulang kali untuk berbabagi routes
-        //pada pemanggilan di Post Controller sudah dilakukan eager loading sehingga pada route yang lain dilakukan eager lazy load
-        'posts' => $author->posts->load('category', 'user')
-    ]);
-});
+// Route::get('/authors/{author:username}', function (User $author) {
+//     return view('posts', [
+//         'title' => "Post by Author    : $author->name",
+//         'active' => 'posts',
+//         //penggunaan load itu digunakan untuk melakukan lazy load
+//         //view Posts digunakan berulang kali untuk berbabagi routes
+//         //pada pemanggilan di Post Controller sudah dilakukan eager loading sehingga pada route yang lain dilakukan eager lazy load
+//         'posts' => $author->posts->load('category', 'user')
+//     ]);
+// });
 //video 10
+
+// video 13
