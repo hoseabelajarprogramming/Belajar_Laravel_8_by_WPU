@@ -27,10 +27,21 @@ class LoginController extends Controller
         //intended adalah sebuah method dari laravel yang akan membawa usernya ke sebuah tempat sebelum memasuki otentikasi middleware
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/dashboard');
+            return redirect()->intended('/posts');
         }
 
 
         return back()->with('loginError', 'Login failed!');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

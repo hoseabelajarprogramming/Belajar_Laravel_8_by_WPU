@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
@@ -140,9 +141,17 @@ Route::get('/categories', function () {
 
 // video 13
 
-//video 14
-Route::get('/login', [LoginController::class, 'index']);
+//video 14,15,16
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest'); //artinya page ini akan terakses bagi user yang belum terautentikasi
 Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::get('/register', [RegisterController::class, 'index']);
-//video 14
+Route::post('/register', [RegisterController::class, 'store']);
+
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::post('/logout', [LoginController::class, 'logout']);
+
+
+//video 14,15,16

@@ -1,0 +1,14 @@
+Middleware Authentikasi menyediakan sebuah mekanisme yang memudahkan kita untuk inspecsi dan filter HTTP Request
+Contohnya
+Laravel sudah menyediakan middleware untuk memverifikasi user dari aplikasi sudah terauthenthikasi atau belum, kalo belum maka akan di redirect ke halaman yang diingiinkan misalnya login namun apabila sudah maka akan mengizinkan masuk ke yang dituju.
+
+
+Secara default middleware dari laravel ada yang sudah berjalan di laravel
+misalnya global middleware yang berjalan di HTTP Request
+
+
+Auth itu untuk user yang sudah terotentikasi (sudah login)
+Guest itu untuk user yang blm terotentikasi (belum login)
+
+
+Kalo ingin mengubah default setelah login adalah dengan masuk ke RouteServiceProvider kemudian ganti public const HOME = '/home' ke halaman yang di inginkan
